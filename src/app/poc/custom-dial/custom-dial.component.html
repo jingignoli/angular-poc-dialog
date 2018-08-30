@@ -1,0 +1,10 @@
+<ng-template #contentTemplate>
+  <div style="background-color: red">This is the dial title</div>
+</ng-template>
+
+<app-dialog
+  [contentTemplate]="contentTemplate"
+  [actionsTemplate]="actionsTemplate"
+  [dialogTitle]="'Dial title'"
+  [admin]="true">
+</app-dialog>

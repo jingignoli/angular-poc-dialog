@@ -1,0 +1,34 @@
+<div class="dialog" [class.dialog--admin]="admin">
+  <div class="dialog__header">
+    <h1 class="dialog__header__title" mat-dialog-title>
+      <ng-container *ngTemplateOutlet="headerTemplate || defaultHeaderTemplate"></ng-container>
+    </h1>
+  </div>
+
+  <div *ngIf="content" mat-dialog-content class="dialog__content dialog__content--padding">
+    {{ content }}
+  </div>
+
+  <div *ngIf="!content" mat-dialog-content class="dialog__content">
+    <ng-container *ngTemplateOutlet="contentTemplate ? contentTemplate : defaultContentTemplate"></ng-container>
+  </div>
+
+  <div mat-dialog-actions class="dialog__actions">
+    <ng-container *ngTemplateOutlet="actionsTemplate ? actionsTemplate : defaultActionsTemplate"></ng-container>
+  </div>
+</div>
+
+<ng-template #defaultHeaderTemplate>
+  {{ dialogTitle }}
+</ng-template>
+
+
+<ng-template #defaultContentTemplate>
+  <p>This is a default content.</p>
+  <p>Please give me a contentTemplate as input, in order to override me.</p>
+</ng-template>
+
+<ng-template #defaultActionsTemplate>
+  <button class="btn btn-outline-{{ admin ? 'secondary': 'primary' }} mr-2" [mat-dialog-close]="false">{{ resetButtonTitle }}</button>
+  <button class="btn btn-{{ admin ? 'secondary': 'primary' }}" [mat-dialog-close]="true">{{ submitButtonTitle }}</button>
+</ng-template>
